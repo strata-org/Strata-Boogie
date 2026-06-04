@@ -14,6 +14,9 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Install cvc5
+        uses: strata-org/Strata/.github/actions/install-cvc5@main
+
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
         with:
