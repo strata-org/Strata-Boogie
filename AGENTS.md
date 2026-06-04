@@ -110,7 +110,7 @@ Gated by the `_smack` field:
 3. For verification tests, generate expected output:
    ```bash
    dotnet run --project Source -- Tests/<Name>.bpl > Tests/<Name>.core.st
-   ../../.lake/build/bin/strata verify Tests/<Name>.core.st > Tests/<Name>.expect
+   StrataCLI/.lake/build/bin/strata verify Tests/<Name>.core.st > Tests/<Name>.expect
    rm Tests/<Name>.core.st
    ```
 4. Run `dotnet test IntegrationTests/` to confirm

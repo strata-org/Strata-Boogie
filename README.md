@@ -20,17 +20,16 @@ The translator handles most of the Boogie language including:
 ## Project Structure
 
 ```
-Tools/BoogieToStrata/
-├── BoogieToStrata.sln              # Visual Studio solution
-├── Source/
-│   ├── BoogieToStrata.csproj       # Main project
-│   ├── BoogieToStrata.cs           # CLI entry point (arg parsing, Boogie pipeline invocation)
-│   └── StrataGenerator.cs          # Core translation logic (Boogie AST → Strata Core text)
-├── IntegrationTests/
-│   ├── BoogieToStrata.IntegrationTests.csproj  # xUnit test project
-│   └── BoogieToStrataIntegrationTests.cs       # Translation + verification tests
-├── Tests/                          # Test inputs (.bpl) and expected outputs (.expect)
-├── run-integration-tests.sh        # Build + run integration tests
+BoogieToStrata.sln              # Visual Studio solution
+Source/
+├── BoogieToStrata.csproj       # Main project
+├── BoogieToStrata.cs           # CLI entry point (arg parsing, Boogie pipeline invocation)
+└── StrataGenerator.cs          # Core translation logic (Boogie AST → Strata Core text)
+IntegrationTests/
+├── BoogieToStrata.IntegrationTests.csproj  # xUnit test project
+└── BoogieToStrataIntegrationTests.cs       # Translation + verification tests
+Tests/                          # Test inputs (.bpl) and expected outputs (.expect)
+run-integration-tests.sh        # Build + run integration tests
 ```
 
 ## Prerequisites
@@ -41,7 +40,6 @@ Tools/BoogieToStrata/
 ## Building
 
 ```bash
-# From Tools/BoogieToStrata/
 dotnet build Source/BoogieToStrata.csproj
 ```
 
