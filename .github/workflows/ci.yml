@@ -19,16 +19,15 @@ jobs:
         with:
           dotnet-version: '8.0.x'
 
-      - name: Setup elan (Lean toolchain manager)
-        run: |
-          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain none
-          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Clone Strata-CLI
+        run: git clone https://github.com/strata-org/Strata-CLI.git StrataCLI
 
-      - name: Clone and build Strata-CLI
-        run: |
-          git clone https://github.com/strata-org/Strata-CLI.git StrataCLI
-          cd StrataCLI
-          lake build
+      - name: Build Strata-CLI
+        uses: leanprover/lean-action@v1
+        with:
+          build-args: strata
+          test: false
+          lake-package-directory: StrataCLI
 
       - name: Restore dependencies
         run: dotnet restore BoogieToStrata.sln
