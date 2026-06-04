@@ -27,16 +27,18 @@ public class BoogieToStrataIntegrationTests(ITestOutputHelper output) {
     }
 
     private static string GetVerifierPath() {
+        // Allow overriding via environment variable (useful for CI)
+        var envPath = Environment.GetEnvironmentVariable("STRATA_VERIFIER_PATH");
+        if (!string.IsNullOrEmpty(envPath)) {
+            return envPath;
+        }
+
         var directory = GetProjectDirectory();
         if (directory == null) {
             throw new DirectoryNotFoundException("Could not find project directory");
         }
 
-        directory = directory.Parent?.Parent;
-        if (directory == null) {
-            throw new DirectoryNotFoundException("Could not find project parent directory");
-        }
-
+        // Look for StrataCLI built within the project root (standalone repo layout)
         return Path.Combine(directory.FullName, "StrataCLI", ".lake", "build", "bin", "strata");
     }
 

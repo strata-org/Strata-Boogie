@@ -7,3 +7,6 @@ vcs
 Tests/*.core.st
 Tests/*.out
 Tests/*.err
+
+# Cloned dependency (built by run-integration-tests.sh)
+StrataCLI/
