@@ -834,7 +834,7 @@ public class StrataGenerator : ReadOnlyVisitor {
             BinaryOperator.Opcode.RealDiv => "/",
             BinaryOperator.Opcode.FloatDiv => "/",
             BinaryOperator.Opcode.Pow => "^",
-            _ => throw new StrataConversionException(tok, "Unsupported operator: {op}")
+            _ => throw new StrataConversionException(tok, $"Unsupported operator: {op}")
         };
     }
 
@@ -842,7 +842,7 @@ public class StrataGenerator : ReadOnlyVisitor {
         return op.Op switch {
             UnaryOperator.Opcode.Not => "!",
             UnaryOperator.Opcode.Neg => "-",
-            _ => throw new StrataConversionException(tok, "Unsupported operator: {op}")
+            _ => throw new StrataConversionException(tok, $"Unsupported operator: {op}")
         };
     }
 
